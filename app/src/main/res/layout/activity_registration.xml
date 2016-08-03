@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8b1829"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    tools:context=".Activities.RegistrationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|center_vertical">
+
+        <TextView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Signup"
+            android:textColor="#F1F1F1"
+            android:textSize="35sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="70dp"
+            android:background="#962f3e"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/newUserName_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:background="#450714"
+                android:hint="Name -"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <EditText
+                android:id="@+id/password_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="#450714"
+                android:hint="Password-"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <EditText
+                android:id="@+id/confirmPassword_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="#450714"
+                android:hint="Confirm Password-"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <EditText
+                android:id="@+id/email_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="#450714"
+                android:hint="Email-"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <EditText
+                android:id="@+id/contactNo_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="#450714"
+                android:hint="Contact no-"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <EditText
+                android:id="@+id/address_editText"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="#450714"
+                android:hint="Address-"
+                android:paddingLeft="5dp"
+                android:textColorHint="#f1f1f1" />
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="45dp"
+                android:background="#450714"
+                android:text="Submit"
+                android:textColor="#f1f1f1" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

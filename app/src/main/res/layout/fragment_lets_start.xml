@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.LetsStartFragment">
+
+    <ImageView
+        android:id="@+id/letsstart_image"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/letsstartimage_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Are you Ready to eat?"
+        android:textColor="#402517"
+        android:textSize="36dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/letsstartbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#d67e4e"
+        android:text="Let's Start "
+        android:textColor="#FBF5C0"/>
+
+</LinearLayout>
+
