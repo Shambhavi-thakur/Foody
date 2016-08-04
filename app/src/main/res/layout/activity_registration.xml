@@ -14,7 +14,7 @@
         android:layout_gravity="center_horizontal|center_vertical">
 
         <TextView
-            android:id="@+id/image"
+            android:id="@+id/signup_txtview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -40,6 +40,7 @@
                 android:layout_marginTop="30dp"
                 android:background="#450714"
                 android:hint="Name -"
+                android:textColor="#FFFFFF"
                 android:paddingLeft="5dp"
                 android:textColorHint="#f1f1f1" />
 
@@ -51,6 +52,7 @@
                 android:background="#450714"
                 android:hint="Password-"
                 android:inputType="textPassword"
+                android:textColor="#FFFFFF"
                 android:paddingLeft="5dp"
                 android:textColorHint="#f1f1f1" />
 
@@ -61,6 +63,7 @@
                 android:layout_marginTop="25dp"
                 android:background="#450714"
                 android:hint="Confirm Password-"
+                android:textColor="#FFFFFF"
                 android:inputType="textPassword"
                 android:paddingLeft="5dp"
                 android:textColorHint="#f1f1f1" />
@@ -72,6 +75,7 @@
                 android:layout_marginTop="25dp"
                 android:background="#450714"
                 android:hint="Email-"
+                android:textColor="#FFFFFF"
                 android:paddingLeft="5dp"
                 android:textColorHint="#f1f1f1" />
 
@@ -92,6 +96,7 @@
                 android:layout_marginTop="25dp"
                 android:background="#450714"
                 android:hint="Address-"
+                android:textColor="#FFFFFF"
                 android:paddingLeft="5dp"
                 android:textColorHint="#f1f1f1" />
 

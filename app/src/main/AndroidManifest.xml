@@ -35,7 +35,9 @@
         <activity
             android:name=".Activities.NavigationActivity"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.AccountDetailsActivity"></activity>
+        <activity android:name=".Activities.ChangepasswordActivity"></activity>
     </application>
 
 </manifest>

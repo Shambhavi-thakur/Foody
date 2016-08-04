@@ -1,57 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group
         android:id="@+id/group_address"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/addressid"
             android:icon="@drawable/address_icon"
             android:title="Address" />
-
     </group>
     <group
         android:id="@+id/group_restro"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/restro_id"
             android:icon="@drawable/restro_icon"
             android:title="Restaurants" />
-
     </group>
     <group
-
         android:id="@+id/group_order"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/orderid"
             android:icon="@drawable/order_icon"
             android:title="Orders" />
-
     </group>
     <group
-
         android:id="@+id/group_accounts"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/account_id"
             android:icon="@drawable/account_icon"
             android:title="Account" />
-
     </group>
     <group
         android:id="@+id/group_addressbook"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/addressbook_id"
             android:icon="@drawable/add_info_icon"
             android:title="Address Book" />
-
     </group>
     <group
         android:id="@+id/group_settings"
@@ -60,9 +47,7 @@
             android:id="@+id/settings_id"
             android:icon="@drawable/set_icon"
             android:title="Settings" />
-
     </group>
-
     <group
         android:id="@+id/group_info"
         android:checkableBehavior="single">
@@ -70,16 +55,13 @@
             android:id="@+id/info_id"
             android:icon="@drawable/info_icon"
             android:title="Info" />
-
     </group>
     <group
         android:id="@+id/group_logout"
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/logoutid"
             android:icon="@drawable/logout_icon"
             android:title="Logout" />
     </group>
-
 </menu>

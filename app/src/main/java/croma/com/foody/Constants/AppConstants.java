@@ -1,7 +1,7 @@
 package croma.com.foody.Constants;
 
 /**
- * Created by sauravsanjay on 8/2/16.
+ * Created by Shambhavi Thakur on 8/2/16.
  */
 public class AppConstants {
 

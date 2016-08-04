@@ -43,13 +43,13 @@ public class RegistrationActivity extends AppCompatActivity implements initInter
     @Override
     public void findViewById() {
 
-        newUserName_editText = (EditText) findViewById(R.id.newUserName_editText);
-        password_editText = (EditText) findViewById(R.id.password_editText);
-        confirmPassword_editText = (EditText) findViewById(R.id.confirmPassword_editText);
-        email_editText = (EditText) findViewById(R.id.email_editText);
-        contactNo_editText = (EditText) findViewById(R.id.contactNo_editText);
-        address_editText = (EditText) findViewById(R.id.address_editText);
-        submitButton = (Button) findViewById(R.id.submitButton);
+        newUserName_editText       =       (EditText) findViewById(R.id.newUserName_editText);
+        password_editText          =       (EditText) findViewById(R.id.password_editText);
+        confirmPassword_editText   =       (EditText) findViewById(R.id.confirmPassword_editText);
+        email_editText             =       (EditText) findViewById(R.id.email_editText);
+        contactNo_editText         =       (EditText) findViewById(R.id.contactNo_editText);
+        address_editText           =       (EditText) findViewById(R.id.address_editText);
+        submitButton               =       (Button) findViewById(R.id.submitButton);
 
     }
 
