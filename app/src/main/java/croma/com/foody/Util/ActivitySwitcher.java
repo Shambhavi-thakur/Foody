@@ -1,5 +1,6 @@
 package croma.com.foody.Util;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
@@ -9,7 +10,7 @@ import croma.com.foody.Constants.AppConstants;
 
 
 // Activity Switcher
-public class ActivitySwitcher {
+public final class ActivitySwitcher {
 
 
     /**
@@ -77,6 +78,7 @@ public class ActivitySwitcher {
      * @param className
      * @param finishCurrent
      */
+    @TargetApi(16)
     public static void switchActivityWithFinishAffinity(final Activity activity, final Class className, final boolean finishCurrent) {
 
         new Handler().postDelayed(new Runnable() {
