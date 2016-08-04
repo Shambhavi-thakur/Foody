@@ -1,4 +1,4 @@
-package croma.com.foody.Activities;
+package croma.com.foody.interfaces;
 
 /**
  * Created by sauravsanjay on 7/27/16.

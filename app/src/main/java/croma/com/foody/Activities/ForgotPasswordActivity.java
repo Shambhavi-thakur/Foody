@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import croma.com.foody.R;
 
+/**
+ * @author Shambahvi.Thakur
+ *          Forgot Password Activity 
+ */
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     @Override

@@ -14,6 +14,7 @@ import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
 import croma.com.foody.Util.NetUtil;
 import croma.com.foody.Util.SharedPrefUtil;
+import croma.com.foody.interfaces.initInterface;
 
 
 /**

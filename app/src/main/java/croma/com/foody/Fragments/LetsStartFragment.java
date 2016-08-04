@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import croma.com.foody.Activities.NavigationActivity;
 import croma.com.foody.R;
+import croma.com.foody.Util.ActivitySwitcher;
+import croma.com.foody.interfaces.initInterface;
 
 
 /**
@@ -19,7 +23,9 @@ import croma.com.foody.R;
  * Use the {@link LetsStartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LetsStartFragment extends Fragment {
+public class LetsStartFragment extends Fragment implements initInterface,View.OnClickListener {
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,6 +36,9 @@ public class LetsStartFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private View mView;
+    private Button letsstartbutton;
+
 
     public LetsStartFragment() {
         // Required empty public constructor
@@ -66,7 +75,11 @@ public class LetsStartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lets_start, container, false);
+        mView = inflater.inflate(R.layout.fragment_lets_start, container, false);
+        findViewById();
+        applyFont();
+        setOnClickListener();
+        return mView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +104,37 @@ public class LetsStartFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void findViewById() {
+
+        letsstartbutton     =       (Button)mView.findViewById(R.id.letsstartbutton);
+
+
+    }
+
+    @Override
+    public void applyFont() {
+
+    }
+
+    @Override
+    public void setOnClickListener() {
+
+        letsstartbutton.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.letsstartbutton:{
+                ActivitySwitcher.switchActivityWithoutHandler(getActivity(), NavigationActivity.class,true);
+                break;
+            }
+        }
     }
 
     /**

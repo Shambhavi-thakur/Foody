@@ -2,20 +2,25 @@ package croma.com.foody.Activities;
 
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import croma.com.foody.Adapters.MyPagerAdapter;
 import croma.com.foody.Fragments.LetsStartFragment;
 import croma.com.foody.Fragments.OurLocationFragment;
 import croma.com.foody.R;
+import croma.com.foody.interfaces.initInterface;
 
+
+/**
+ * @author Shambhavi.thakur
+ *          First Activity Class
+ */
 public class FirstActivity extends AppCompatActivity implements initInterface, View.OnClickListener,LetsStartFragment.OnFragmentInteractionListener, OurLocationFragment.OnFragmentInteractionListener{
 
-
+    public static final String  TAG =   FirstActivity.class.getSimpleName();
     public ViewPager vPager;
+    public MyPagerAdapter pagerAdapter;
 
 
     @Override
@@ -23,13 +28,17 @@ public class FirstActivity extends AppCompatActivity implements initInterface, V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         findViewById();
+        applyFont();
+        setOnClickListener();
     }
 
     @Override
     public void findViewById() {
+
         vPager = (ViewPager) findViewById(R.id.vPager);
-        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager()) ;
+        pagerAdapter = new MyPagerAdapter(getSupportFragmentManager()) ;
         vPager.setAdapter(pagerAdapter);
+
     }
 
     @Override

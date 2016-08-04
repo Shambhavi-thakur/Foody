@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import croma.com.foody.Activities.NavigationActivity;
 import croma.com.foody.R;
+import croma.com.foody.Util.ActivitySwitcher;
+import croma.com.foody.interfaces.initInterface;
 
 
 /**
@@ -19,7 +23,8 @@ import croma.com.foody.R;
  * Use the {@link OurLocationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OurLocationFragment extends Fragment {
+public class OurLocationFragment extends Fragment implements initInterface,View.OnClickListener {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,8 +33,12 @@ public class OurLocationFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
+    private Button showResturants_button;
+    private View mView;
+
+
+
 
     public OurLocationFragment() {
         // Required empty public constructor
@@ -66,7 +75,11 @@ public class OurLocationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_our_location, container, false);
+        mView =  inflater.inflate(R.layout.fragment_our_location, container, false);
+        findViewById();
+        applyFont();
+        setOnClickListener();
+        return mView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +104,37 @@ public class OurLocationFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+
+
+    @Override
+    public void findViewById() {
+
+        showResturants_button       =       (Button)mView.findViewById(R.id.showResturants_button);
+
+    }
+
+    @Override
+    public void applyFont() {
+
+    }
+
+    @Override
+    public void setOnClickListener() {
+
+        showResturants_button.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.showResturants_button:{
+                ActivitySwitcher.switchActivityWithoutHandler(getActivity(), NavigationActivity.class,true);
+                break;
+            }
+
+        }
     }
 
     /**

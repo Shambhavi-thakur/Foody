@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/letsstart_image"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@drawable/letsstartimage_icon"/>
+        android:layout_height="300dp"
+        android:background="@drawable/letsstartimage_icon" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,16 +18,22 @@
         android:text="Are you Ready to eat?"
         android:textColor="#402517"
         android:textSize="36dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_below="@+id/letsstart_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
     <Button
         android:id="@+id/letsstartbutton"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_gravity="end"
         android:background="#d67e4e"
         android:text="Let's Start "
-        android:textColor="#FBF5C0"/>
+        android:textColor="#FBF5C0"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+</RelativeLayout>
 

@@ -8,7 +8,8 @@ import croma.com.foody.Fragments.LetsStartFragment;
 import croma.com.foody.Fragments.OurLocationFragment;
 
 /**
- * Created by sauravsanjay on 8/3/16.
+ * @author Shambhavi.Thakur
+ *          MyPagerAdapter
  */
 public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -22,14 +23,12 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 LetsStartFragment tab1 = new LetsStartFragment();
                 return tab1;
-
             case 1:
                 OurLocationFragment tab2 = new OurLocationFragment();
                 return tab2;
             default:
                 return null;
         }
-
     }
 
     @Override

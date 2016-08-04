@@ -22,6 +22,9 @@ public class AppConstants {
     // splash Activity
     public static final int SPLASH_HANDLER_TIMER = 3000;
 
+    //
+    public static final String KEY_USER_LOGGED_IN = "user_loggged_in";
+
     // Registration Activity
     public static final String KEY_REGISTRATION_USERNAME = "username";
     public static final String KEY_REGISTRATION_PASSWORD = "password";

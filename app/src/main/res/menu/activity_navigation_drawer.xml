@@ -10,28 +10,28 @@
             android:icon="@drawable/address_icon"
             android:title="Address" />
 
-        </group>
-       <group
-           android:id="@+id/group_restro"
-           android:checkableBehavior="single">
+    </group>
+    <group
+        android:id="@+id/group_restro"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/restro_id"
             android:icon="@drawable/restro_icon"
             android:title="Restaurants" />
 
-           </group>
+    </group>
     <group
 
-            android:id="@+id/group_order"
-            android:checkableBehavior="single">
+        android:id="@+id/group_order"
+        android:checkableBehavior="single">
 
-         <item
+        <item
             android:id="@+id/orderid"
             android:icon="@drawable/order_icon"
             android:title="Orders" />
 
-            </group>
+    </group>
     <group
 
         android:id="@+id/group_accounts"
@@ -42,7 +42,7 @@
             android:icon="@drawable/account_icon"
             android:title="Account" />
 
-        </group>
+    </group>
     <group
         android:id="@+id/group_addressbook"
         android:checkableBehavior="single">
@@ -52,7 +52,7 @@
             android:icon="@drawable/add_info_icon"
             android:title="Address Book" />
 
-        </group>
+    </group>
     <group
         android:id="@+id/group_settings"
         android:checkableBehavior="single">
@@ -61,7 +61,7 @@
             android:icon="@drawable/set_icon"
             android:title="Settings" />
 
-        </group>
+    </group>
 
     <group
         android:id="@+id/group_info"
@@ -71,7 +71,7 @@
             android:icon="@drawable/info_icon"
             android:title="Info" />
 
-        </group>
+    </group>
     <group
         android:id="@+id/group_logout"
         android:checkableBehavior="single">

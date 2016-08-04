@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,39 +10,50 @@
         android:id="@+id/location_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/ourlocationimage_icon"/>
+        android:background="@drawable/ourlocationimage_icon" />
 
     <TextView
         android:id="@+id/setlocation_Txtview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/location_image"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
         android:text="Set Location"
-        android:textSize="30dp"
         android:textColor="#2a190f"
-        android:textStyle="bold"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="City"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText"
+        android:hint="City"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/location_image"
+        android:layout_marginTop="79dp"
         android:hint="Location"
-        android:textSize="20dp"
-        android:layout_marginTop="20dp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/showResturants_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:background="#804b2e"
         android:text="Show Restaurants"
-        android:layout_marginTop="30dp"
-        android:textColor="#FBF5C0"/>
+        android:textColor="#FBF5C0" />
 
-</LinearLayout>
+</RelativeLayout>
