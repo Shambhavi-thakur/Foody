@@ -25,6 +25,8 @@ public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener,initInterface {
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,7 @@ public class NavigationActivity extends AppCompatActivity
                 break;
             }
             case R.id.account_id:{
+                ActivitySwitcher.switchActivityWithoutHandler(NavigationActivity.this,AccountDetailsActivity.class,false);
                 break;
             }
             case R.id.addressbook_id:{

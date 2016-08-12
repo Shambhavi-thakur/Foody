@@ -5,18 +5,19 @@ package croma.com.foody.Constants;
  */
 public class AppConstants {
 
-    public static final int SUCCESS_RESULT = 0;
+        public static final int SUCCESS_RESULT = 0;
 
-    public static final int FAILURE_RESULT = 1;
+        public static final int FAILURE_RESULT = 1;
 
-    public static final String PACKAGE_NAME =
-            "com.google.android.gms.location.sample.locationaddress";
+        public static final String PACKAGE_NAME =
+                "com.google.android.gms.location.sample.locationaddress";
 
-    public static final String RECEIVER = PACKAGE_NAME + ".RECEIVER";
+        public static final String RECEIVER = PACKAGE_NAME + ".RECEIVER";
 
-    public static final String RESULT_DATA_KEY = PACKAGE_NAME + ".RESULT_DATA_KEY";
+        public static final String RESULT_DATA_KEY = PACKAGE_NAME + ".RESULT_DATA_KEY";
 
-    public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME + ".LOCATION_DATA_EXTRA";
+        public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME + ".LOCATION_DATA_EXTRA";
+
 
 
     // splash Activity
@@ -32,5 +33,11 @@ public class AppConstants {
     public static final String KEY_REGISTRATION_EMAIL = "email";
     public static final String KEY_REGISTRATION_CONTACTNUMBER = "contactno";
     public static final String KEY_REGISTRATION_ADDRESS = "address";
+
+    //AccountActivityDetails
+    public static final String KEY_ACCOUNTDETAILS_FIRSTNAME     = "firstname";
+    public static final String KEY_ACCOUNTDETAILS_LASTNAME      = "lastname";
+    public static final String KEY_ACCOUNTDETAILS_EMAIL         = "email";
+    public static final String KEY_ACCOUNTDETAILS_MOBILENUMBER  = "mobilenumber";
 
 }

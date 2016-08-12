@@ -14,19 +14,20 @@ import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
 import croma.com.foody.interfaces.initInterface;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link OurLocationFragment.OnFragmentInteractionListener} interface
+ * {@link SetLocationFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link OurLocationFragment#newInstance} factory method to
+ * Use the {@link SetLocationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OurLocationFragment extends Fragment implements initInterface,View.OnClickListener {
+public class SetLocationFragment extends Fragment implements initInterface, View.OnClickListener {
 
 
-    private static final String TAG     =       OurLocationFragment.class.getSimpleName();
+    private static final String TAG     =       SetLocationFragment.class.getSimpleName();
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,14 +37,11 @@ public class OurLocationFragment extends Fragment implements initInterface,View.
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private OnFragmentInteractionListener mListener;
     private Button showResturants_button;
     private View mView;
+    private OnFragmentInteractionListener mListener;
 
-
-
-
-    public OurLocationFragment() {
+    public SetLocationFragment() {
         // Required empty public constructor
     }
 
@@ -53,11 +51,11 @@ public class OurLocationFragment extends Fragment implements initInterface,View.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OurLocationFragment.
+     * @return A new instance of fragment SetLocationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OurLocationFragment newInstance(String param1, String param2) {
-        OurLocationFragment fragment = new OurLocationFragment();
+    public static SetLocationFragment newInstance(String param1, String param2) {
+        SetLocationFragment fragment = new SetLocationFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,11 +76,12 @@ public class OurLocationFragment extends Fragment implements initInterface,View.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView =  inflater.inflate(R.layout.fragment_our_location, container, false);
+        mView = inflater.inflate(R.layout.fragment_Set_location, container, false);
         findViewById();
         applyFont();
         setOnClickListener();
         return mView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -109,13 +108,10 @@ public class OurLocationFragment extends Fragment implements initInterface,View.
         mListener = null;
     }
 
-
-
     @Override
     public void findViewById() {
 
         showResturants_button       =       (Button)mView.findViewById(R.id.showResturants_button);
-
     }
 
     @Override
@@ -130,13 +126,14 @@ public class OurLocationFragment extends Fragment implements initInterface,View.
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View view) {
+        switch (view.getId()){
             case R.id.showResturants_button:{
                 ActivitySwitcher.switchActivityWithoutHandler(getActivity(), NavigationActivity.class,true);
                 break;
             }
         }
+
     }
 
     /**

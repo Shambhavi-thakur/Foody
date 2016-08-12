@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import croma.com.foody.Fragments.LetsStartFragment;
-import croma.com.foody.Fragments.OurLocationFragment;
+import croma.com.foody.Fragments.LocatemeFragment;
 
 /**
  * @author Shambhavi.Thakur
@@ -24,7 +24,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
                 LetsStartFragment tab1 = new LetsStartFragment();
                 return tab1;
             case 1:
-                OurLocationFragment tab2 = new OurLocationFragment();
+                LocatemeFragment tab2 = new LocatemeFragment();
                 return tab2;
             default:
                 return null;

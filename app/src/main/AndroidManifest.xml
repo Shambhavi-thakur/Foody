@@ -3,6 +3,8 @@
     package="croma.com.foody">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -36,8 +38,15 @@
             android:name=".Activities.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.AccountDetailsActivity"></activity>
-        <activity android:name=".Activities.ChangepasswordActivity"></activity>
+        <activity android:name=".Activities.AccountDetailsActivity" />
+        <activity android:name=".Activities.ChangepasswordActivity" />
+        <activity android:name=".Activities.MainActivity" />
+
+        <service
+            android:name=".Activities.FetchAddressIntentService"
+            android:exported="false"></service>
+
+        <activity android:name=".Activities.ListDetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -71,59 +71,51 @@ public class RegistrationActivity extends AppCompatActivity implements initInter
                 if (NetUtil.isNetworkAvailable(RegistrationActivity.this)) {
                     if (!TextUtils.isEmpty(newUserName_editText.getText().toString())) {
                         if (!TextUtils.isEmpty(password_editText.getText().toString())) {
+                            if(!TextUtils.isEmpty(confirmPassword_editText.getText().toString())) {
+                                if (password_editText.getText().toString().equals(confirmPassword_editText.getText().toString())) {
+                                    if (!TextUtils.isEmpty(email_editText.getText().toString())) {
+                                        if (!TextUtils.isEmpty(contactNo_editText.getText().toString())) {
+                                            if (!TextUtils.isEmpty(address_editText.getText().toString())) {
 
-                            SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_USERNAME, newUserName_editText.getText().toString(), RegistrationActivity.this);
-                            SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_PASSWORD, password_editText.getText().toString(), RegistrationActivity.this);
-                            Toast.makeText(RegistrationActivity.this, "Thanx for Registration", Toast.LENGTH_SHORT).show();
-                            ActivitySwitcher.switchActivity(RegistrationActivity.this, LoginActivity.class, true);
-                        }
-                        else {
-                            Toast.makeText(RegistrationActivity.this, "Password Cannot be Empty", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "Username Cannot be Empty", Toast.LENGTH_SHORT).show();
-                        }
-                    if (password_editText.getText().toString().equals(confirmPassword_editText.getText().toString())) {
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_USERNAME, newUserName_editText.getText().toString(), RegistrationActivity.this);
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_PASSWORD, password_editText.getText().toString(), RegistrationActivity.this);
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_CONFIRMPASSWORD, confirmPassword_editText.getText().toString(),RegistrationActivity.this);
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_EMAIL, email_editText.getText().toString(), RegistrationActivity.this);
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_CONTACTNUMBER, contactNo_editText.getText().toString(),RegistrationActivity.this);
+                                               SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_ADDRESS, address_editText.getText().toString(), RegistrationActivity.this);
+                                               Toast.makeText(RegistrationActivity.this, "Thanx for Registration", Toast.LENGTH_SHORT).show();
+                                               ActivitySwitcher.switchActivity(RegistrationActivity.this, LoginActivity.class, true);
 
-                                Toast.makeText(RegistrationActivity.this,"Password Matched",Toast.LENGTH_SHORT).show();
-                            }
-                    else {
+                        } else {
+                                 Toast.makeText(RegistrationActivity.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
+                                            }
+                         }else {
+                                 Toast.makeText(RegistrationActivity.this, "contact number cannot be empty", Toast.LENGTH_SHORT).show();
+                                        }
+                    }else {
+                             Toast.makeText(RegistrationActivity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+                                    }
+                 }else {
                         Toast.makeText(RegistrationActivity.this,"Password Mismatch, Please Retype",Toast.LENGTH_SHORT).show();
                             }
-                    if (!TextUtils.isEmpty(email_editText.getText().toString())) {
-
-                        SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_EMAIL, email_editText.getText().toString(), RegistrationActivity.this);
-                                }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
-                                }
-                    if (!TextUtils.isEmpty(contactNo_editText.getText().toString())) {
-
-                        SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_CONTACTNUMBER, contactNo_editText.getText().toString(),RegistrationActivity.this);
-                                    }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "contact number cannot be empty", Toast.LENGTH_SHORT).show();
-                                    }
-                    if (!TextUtils.isEmpty(address_editText.getText().toString())) {
-
-                        SharedPrefUtil.putString(AppConstants.KEY_REGISTRATION_ADDRESS, address_editText.getText().toString(), RegistrationActivity.this);
+               }else {
+                       Toast.makeText(RegistrationActivity.this,"This Field is Mandatory",Toast.LENGTH_SHORT).show();
+                            }
+             }else {
+                     Toast.makeText(RegistrationActivity.this, "Password Cannot be Empty", Toast.LENGTH_SHORT).show();
+                        }
+          }else {
+                  Toast.makeText(RegistrationActivity.this, "Username Cannot be Empty", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(RegistrationActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+       }else {
+               Toast.makeText(RegistrationActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
                 break;
-
             }
+     }
 
-                }
-            }
-
-        }
+   }
+}
 
 
 
