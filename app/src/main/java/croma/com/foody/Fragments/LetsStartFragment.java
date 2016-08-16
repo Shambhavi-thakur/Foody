@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import croma.com.foody.Activities.NavigationActivity;
+import croma.com.foody.Activities.FirstActivity;
 import croma.com.foody.R;
-import croma.com.foody.Util.ActivitySwitcher;
 import croma.com.foody.interfaces.initInterface;
 
 
@@ -131,7 +129,7 @@ public class LetsStartFragment extends Fragment implements initInterface,View.On
         switch (v.getId())
         {
             case R.id.letsstartbutton:{
-                ActivitySwitcher.switchActivityWithoutHandler(getActivity(), NavigationActivity.class,true);
+                ((FirstActivity)getActivity()).vPager.setCurrentItem(1);
                 break;
             }
         }

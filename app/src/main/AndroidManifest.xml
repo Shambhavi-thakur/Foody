@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="croma.com.foody" >
+    package="croma.com.foody">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:name=".application.MyApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
-        <meta-data android:name="com.google.android.gms.version"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".Activities.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,15 +42,16 @@
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.AccountDetailsActivity" />
-
-
-        <activity android:name=".Activities.ListDetailsActivity" >
-        </activity>
+        <activity android:name=".Activities.ListDetailsActivity"></activity>
 
         <service
-            android:name=".Activities.FetchAddressIntentService"
-            android:exported="false"/>
+            android:name=".services.FetchAddressIntentService"
+            android:exported="false" />
 
+        <activity
+            android:name=".Activities.RestroActivity"
+            android:label="@string/title_activity_restro"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

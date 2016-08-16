@@ -4,30 +4,30 @@ package croma.com.foody.services;
  * Created by Shambhavi Thakur on 8/5/16.
  */
 
-    import android.app.IntentService;
-    import android.content.Intent;
-    import android.location.Address;
-    import android.location.Geocoder;
-    import android.location.Location;
-    import android.os.Bundle;
-    import android.os.ResultReceiver;
-    import croma.com.foody.R;
-    import android.text.TextUtils;
-    import android.util.Log;
+import android.app.IntentService;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import android.text.TextUtils;
+import android.util.Log;
 
-    import java.io.IOException;
-    import java.util.ArrayList;
-    import java.util.List;
-    import java.util.Locale;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
-    import croma.com.foody.Constants.AppConstants;
+import croma.com.foody.Constants.AppConstants;
+import croma.com.foody.R;
 
 /**
-     * Asynchronously handles an intent using a worker thread. Receives a ResultReceiver object and a
-     * location through an intent. Tries to fetch the address for the location using a Geocoder, and
-     * sends the result to the ResultReceiver.
-     */
-    public class FetchAddressIntentService extends IntentService {
+ * Asynchronously handles an intent using a worker thread. Receives a ResultReceiver object and a
+ * location through an intent. Tries to fetch the address for the location using a Geocoder, and
+ * sends the result to the ResultReceiver.
+ */
+public class FetchAddressIntentService extends IntentService {
     private static final String TAG = "FetchAddressIS";
 
     /**
@@ -49,7 +49,7 @@ package croma.com.foody.services;
      * result receiver. If unsuccessful, sends an error message instead.
      * Note: We define a {@link android.os.ResultReceiver} in * MainActivity to process content
      * sent from this service.
-     *
+     * <p/>
      * This service calls this method from the default worker thread with the intent that started
      * the service. When this method returns, the service automatically stops.
      */
@@ -114,7 +114,7 @@ package croma.com.foody.services;
         }
 
         // Handle case where no address was found.
-        if (addresses == null || addresses.size()  == 0) {
+        if (addresses == null || addresses.size() == 0) {
             if (errorMessage.isEmpty()) {
                 errorMessage = getString(R.string.no_address_found);
                 Log.e(TAG, errorMessage);
@@ -133,7 +133,7 @@ package croma.com.foody.services;
             // getPostalCode() ("94043", for example)
             // getCountryCode() ("US", for example)
             // getCountryName() ("United States", for example)
-            for(int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+            for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
                 addressFragments.add(address.getAddressLine(i));
             }
             Log.i(TAG, getString(R.string.address_found));

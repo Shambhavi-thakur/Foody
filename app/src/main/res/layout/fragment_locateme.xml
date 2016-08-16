@@ -1,62 +1,70 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f6f6f6"
     android:orientation="vertical"
-    tools:context=".Fragments.LocatemeFragment"
-    android:background="#f6f6f6">
+    tools:context=".Fragments.LocatemeFragment">
 
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/locateme_image" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/locationTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/imageView"
+        android:paddingTop="10dp"
+        android:gravity="center"
         android:text="Your location"
-        android:textSize="30dp"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="24sp" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:layout_below="@+id/locationTextView"
         android:text="Tell us where you want us to deliver the food to"
-        android:textSize="20dp"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:padding="15dp"
-        android:gravity="center">
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
 
         <TextView
             android:id="@+id/manually_TextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Manually"
             android:layout_weight="1"
-            android:textColor="#000000"
-            android:clickable="true"/>
+            android:background="#C1C1C1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="Manually"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/locate_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="#f1f1f1"
             android:background="#662f11"
-            android:text="Locate me"/>
+            android:text="Locate me"
+            android:textColor="#f1f1f1" />
 
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
 

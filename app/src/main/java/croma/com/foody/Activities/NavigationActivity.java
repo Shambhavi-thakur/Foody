@@ -1,5 +1,6 @@
 package croma.com.foody.Activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,12 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-
+import java.util.ArrayList;
 import croma.com.foody.Constants.AppConstants;
+import croma.com.foody.Fragments.RestroListFragment;
 import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
 import croma.com.foody.Util.SharedPrefUtil;
 import croma.com.foody.interfaces.initInterface;
+import croma.com.foody.io.geometry;
 
 
 /**
@@ -22,9 +25,7 @@ import croma.com.foody.interfaces.initInterface;
  *         Navigation Activity Class
  */
 public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener,initInterface {
-
-
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener,initInterface ,RestroListFragment.OnFragmentInteractionListener{
 
 
     @Override
@@ -43,6 +44,9 @@ public class NavigationActivity extends AppCompatActivity
         findViewById();
         applyFont();
         setOnClickListener();
+        if(savedInstanceState==null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new RestroListFragment(),RestroListFragment.TAG).commit();
+        }
     }
 
 
@@ -119,5 +123,19 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public void setOnClickListener() {
 
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /*****************
+     * This function used by adapter
+     ****************/
+    public void onItemClick(int mPosition) {
+
+        ArrayList<geometry> arrayList = ((RestroListFragment)getSupportFragmentManager().findFragmentByTag(RestroListFragment.TAG)).mArrayList;
+        geometry tempValues = (geometry) arrayList.get(mPosition);
     }
 }

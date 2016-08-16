@@ -127,9 +127,7 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
 
     @Override
     public void setOnClickListener() {
-
         locate_button.setOnClickListener(this);
-
     }
 
     @Override

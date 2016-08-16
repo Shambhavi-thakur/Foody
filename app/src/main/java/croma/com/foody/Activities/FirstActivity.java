@@ -1,26 +1,17 @@
 package croma.com.foody.Activities;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
-
-
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -32,8 +23,10 @@ import croma.com.foody.Constants.AppConstants;
 import croma.com.foody.Fragments.LetsStartFragment;
 import croma.com.foody.Fragments.LocatemeFragment;
 import croma.com.foody.R;
+import croma.com.foody.Util.ActivitySwitcher;
 import croma.com.foody.Util.SharedPrefUtil;
 import croma.com.foody.interfaces.initInterface;
+import croma.com.foody.services.FetchAddressIntentService;
 
 
 /**
@@ -113,14 +106,11 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
         mAddressRequested = false;
         mAddressOutput = "";
         updateValuesFromBundle(savedInstanceState);
-
         updateUIWidgets();
         buildGoogleApiClient();
         findViewById();
         applyFont();
         setOnClickListener();
-
-
     }
 
     /**
@@ -205,6 +195,8 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
             if (mAddressRequested) {
                 startIntentService();
             }
+            SharedPrefUtil.putString(AppConstants.LOCATION_LONGITUDE,""+mLastLocation.getLongitude(),FirstActivity.this);
+            SharedPrefUtil.putString(AppConstants.LOCATION_LATTITUDE ,""+mLastLocation.getLatitude(),FirstActivity.this);
         }
     }
 
@@ -250,6 +242,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
     protected void displayAddressOutput() {
 //        mLocationAddressTextView.setText(mAddressOutput);
         Toast.makeText(FirstActivity.this,mAddressOutput,Toast.LENGTH_SHORT).show();
+        ActivitySwitcher.switchActivity(FirstActivity.this, NavigationActivity.class,true);
     }
 
     /**
@@ -302,7 +295,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
 
             // Show a toast message if an address was found.
             if (resultCode == AppConstants.SUCCESS_RESULT) {
-                showToast(getString(R.string.address_found));
+//                showToast(getString(R.string.address_found));
             }
 
             // Reset. Enable the Fetch Address button and stop showing the progress bar.
@@ -324,7 +317,6 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
     @Override
     protected void onResume() {
         super.onResume();
-        fetchAddressButtonHandler();
     }
 
     @Override
