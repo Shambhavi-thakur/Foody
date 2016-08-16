@@ -1,4 +1,4 @@
-package croma.com.foody.Activities;
+package croma.com.foody.services;
 
 /**
  * Created by Shambhavi Thakur on 8/5/16.
