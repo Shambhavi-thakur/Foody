@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragments.LocatemeFragment"
-    android:background="">
+    android:background="#f6f6f6">
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/Locateme_image" />
+        android:background="@drawable/locateme_image" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:text="Your location"
         android:textSize="30dp"
-        android:textColor="@color/colorText"/>
+        android:textColor="#000000"/>
 
 
     <TextView
@@ -27,34 +27,36 @@
         android:layout_gravity="center_horizontal"
         android:text="Tell us where you want us to deliver the food to"
         android:textSize="20dp"
-        android:textColor="@color/colorText"/>
+        android:textColor="#000000"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingTop="20dp">
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:gravity="center">
 
 
         <TextView
             android:id="@+id/manually_TextView"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="Manually"
+            android:layout_weight="1"
+            android:textColor="#000000"
             android:clickable="true"/>
 
         <Button
             android:id="@+id/locate_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#f1f1f1"
             android:background="#662f11"
             android:text="Locate me"/>
 
 
     </LinearLayout>
-
-
-
 </LinearLayout>
 

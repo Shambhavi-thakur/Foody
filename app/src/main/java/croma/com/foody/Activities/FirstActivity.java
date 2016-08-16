@@ -19,8 +19,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 
 import croma.com.foody.Adapters.MyPagerAdapter;
@@ -39,11 +43,12 @@ import croma.com.foody.interfaces.initInterface;
 public class FirstActivity extends AppCompatActivity implements initInterface,
         View.OnClickListener,
         LetsStartFragment.OnFragmentInteractionListener,
-        LocatemeFragment.OnFragmentInteractionListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        LocatemeFragment.OnFragmentInteractionListener,   ConnectionCallbacks, OnConnectionFailedListener  {
 
-    public static final String TAG = FirstActivity.class.getSimpleName();
     public ViewPager vPager;
     public MyPagerAdapter pagerAdapter;
+    protected static final String TAG = "main-activity";
+
     protected static final String ADDRESS_REQUESTED_KEY = "address-request-pending";
     protected static final String LOCATION_ADDRESS_KEY = "location-address";
 
@@ -78,19 +83,20 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
     private AddressResultReceiver mResultReceiver;
 
     /**
-     * Displays the location address.
-     */
-    protected TextView mLocationAddressTextView;
+//     * Displays the location address.
+//     */
+//    protected TextView mLocationAddressTextView;
+//
+//    /**
+//     * Visible while the address is being fetched.
+//     */
+//    ProgressBar mProgressBar;
+//
+//    /**
+//     * Kicks off the request to fetch an address when pressed.
+//     */
+//    Button mFetchAddressButton;
 
-    /**
-     * Visible while the address is being fetched.
-     */
-    ProgressBar mProgressBar;
-
-    /**
-     * Kicks off the request to fetch an address when pressed.
-     */
-    Button mFetchAddressButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,9 +105,9 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
 
         mResultReceiver = new AddressResultReceiver(new Handler());
 
-        mLocationAddressTextView = (TextView) findViewById(R.id.location_address_view);
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        mFetchAddressButton = (Button) findViewById(R.id.fetch_address_button);
+//        mLocationAddressTextView = (TextView) findViewById(R.id.location_address_view);
+//        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+//        mFetchAddressButton = (Button) findViewById(R.id.fetch_address_button);
 
         // Set defaults, then update using values stored in the Bundle.
         mAddressRequested = false;
@@ -113,6 +119,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
         findViewById();
         applyFont();
         setOnClickListener();
+
 
     }
 
@@ -149,7 +156,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      * Runs when user clicks the Fetch Address button. Starts the service to fetch the address if
      * GoogleApiClient is connected.
      */
-    public void fetchAddressButtonHandler(View view) {
+    public void fetchAddressButtonHandler() {
         // We only start the service to fetch the address if GoogleApiClient is connected.
         if (mGoogleApiClient.isConnected() && mLastLocation != null) {
             startIntentService();
@@ -181,26 +188,9 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      */
     @Override
     public void onConnected(Bundle connectionHint) {
-
-
-        // we have to store sharedpreference value
         // Gets the best and most recent location currently available, which may be null
         // in rare cases when a location is not available.
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-
-        SharedPrefUtil.putLong("CurrentLatitude",Double.doubleToLongBits(mLastLocation.getLatitude()).FirstActivity.this);
-        SharedPrefUtil.putLong("CurrentLongitude",Double.doubleToLongBits(mLastLocation.getLongitude()).FirstActivity.this);
-
         if (mLastLocation != null) {
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
@@ -258,7 +248,8 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      * Updates the address in the UI.
      */
     protected void displayAddressOutput() {
-        mLocationAddressTextView.setText(mAddressOutput);
+//        mLocationAddressTextView.setText(mAddressOutput);
+        Toast.makeText(FirstActivity.this,mAddressOutput,Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -266,11 +257,11 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      */
     private void updateUIWidgets() {
         if (mAddressRequested) {
-            mProgressBar.setVisibility(ProgressBar.VISIBLE);
-            mFetchAddressButton.setEnabled(false);
+//            mProgressBar.setVisibility(ProgressBar.VISIBLE);
+//            mFetchAddressButton.setEnabled(false);
         } else {
-            mProgressBar.setVisibility(ProgressBar.GONE);
-            mFetchAddressButton.setEnabled(true);
+//            mProgressBar.setVisibility(ProgressBar.GONE);
+//            mFetchAddressButton.setEnabled(true);
         }
     }
 
@@ -328,7 +319,12 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
         vPager = (ViewPager) findViewById(R.id.vPager);
         pagerAdapter = new MyPagerAdapter(getSupportFragmentManager()) ;
         vPager.setAdapter(pagerAdapter);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchAddressButtonHandler();
     }
 
     @Override

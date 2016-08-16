@@ -22,8 +22,8 @@ public class ListDetailsActivity extends AppCompatActivity implements initInterf
         findViewById();
         applyFont();
         setOnClickListener();
-        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude",1L, getActivity()));
-        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude",1L, getActivity()));
+        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude",1L, ListDetailsActivity.this));
+        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude",1L, ListDetailsActivity.this));
 
     }
 
