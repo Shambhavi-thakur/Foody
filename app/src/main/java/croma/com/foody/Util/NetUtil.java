@@ -114,11 +114,8 @@ public final class NetUtil {
         ConnectivityManager connectivityManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetInfo != null
-                && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-            return true;
-        }
-        return false;
+        return activeNetInfo != null
+                && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI;
     }
 
 
@@ -174,11 +171,8 @@ public final class NetUtil {
         Log.v("activeNetInfo.getType() ",""+activeNetInfo.getSubtypeName());
         Log.v("activeNetInfo.getType() ",""+activeNetInfo.getExtraInfo());
 
-        if (activeNetInfo != null
-                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-            return true;
-        }
-        return false;
+        return activeNetInfo != null
+                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE;
     }
 
 
@@ -194,11 +188,8 @@ public final class NetUtil {
         ConnectivityManager connectivityManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetInfo != null
-                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-            return true;
-        }
-        return false;
+        return activeNetInfo != null
+                && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE;
     }
 
 
@@ -257,7 +248,7 @@ public final class NetUtil {
      * Enumerate network status NET_NO: no network NET 2G: 2g network NET_3G: 3g network NET_4G: 4g network NET_WIFI: wifi
      * NET_UNKNOWN：Unknown Network
      */
-    public static enum NetState {
+    public enum NetState {
         NET_NO, NET_2G, NET_3G, NET_4G, NET_WIFI, NET_UNKNOWN
     }
 

@@ -3,16 +3,18 @@ package croma.com.foody.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import croma.com.foody.Activities.FirstActivity;
-import croma.com.foody.Activities.NavigationActivity;
 import croma.com.foody.R;
-import croma.com.foody.Util.ActivitySwitcher;
+import croma.com.foody.Util.NetUtil;
+import croma.com.foody.Util.ProgressUtils;
 import croma.com.foody.interfaces.initInterface;
 
 
@@ -134,7 +136,11 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.locate_button:{
-                ((FirstActivity)getActivity()).fetchAddressButtonHandler();
+                if(NetUtil.isNetworkAvailable(getActivity())) {
+                    ProgressUtils.showSimpleProgressDialog(getActivity(),"","",false);
+                    ((FirstActivity) getActivity()).fetchAddressButtonHandler();
+                }else{
+                    Toast.makeText(getActivity(),"No Internet Connection",Toast.LENGTH_LONG).show();                }
                 break;
             }
         }

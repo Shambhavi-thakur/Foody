@@ -24,6 +24,6 @@ public class SplashActivity extends Activity {
         }else{
             ActivitySwitcher.switchActivity(SplashActivity.this,LoginActivity.class,true);
         }
-    };
+    }
 }
 

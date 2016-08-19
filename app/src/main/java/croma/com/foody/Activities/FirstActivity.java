@@ -24,6 +24,7 @@ import croma.com.foody.Fragments.LetsStartFragment;
 import croma.com.foody.Fragments.LocatemeFragment;
 import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
+import croma.com.foody.Util.ProgressUtils;
 import croma.com.foody.Util.SharedPrefUtil;
 import croma.com.foody.interfaces.initInterface;
 import croma.com.foody.services.FetchAddressIntentService;
@@ -178,25 +179,29 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      */
     @Override
     public void onConnected(Bundle connectionHint) {
-        // Gets the best and most recent location currently available, which may be null
-        // in rare cases when a location is not available.
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
-            // Determine whether a Geocoder is available.
-            if (!Geocoder.isPresent()) {
-                Toast.makeText(this, R.string.no_geocoder_available, Toast.LENGTH_LONG).show();
-                return;
+        try {
+            // Gets the best and most recent location currently available, which may be null
+            // in rare cases when a location is not available.
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            if (mLastLocation != null) {
+                // Determine whether a Geocoder is available.
+                if (!Geocoder.isPresent()) {
+                    Toast.makeText(this, R.string.no_geocoder_available, Toast.LENGTH_LONG).show();
+                    return;
+                }
+                // It is possible that the user presses the button to get the address before the
+                // GoogleApiClient object successfully connects. In such a case, mAddressRequested
+                // is set to true, but no attempt is made to fetch the address (see
+                // fetchAddressButtonHandler()) . Instead, we start the intent service here if the
+                // user has requested an address, since we now have a connection to GoogleApiClient.
+                if (mAddressRequested) {
+                    startIntentService();
+                }
+                SharedPrefUtil.putString(AppConstants.LOCATION_LONGITUDE,""+mLastLocation.getLongitude(),FirstActivity.this);
+                SharedPrefUtil.putString(AppConstants.LOCATION_LATTITUDE ,""+mLastLocation.getLatitude(),FirstActivity.this);
             }
-            // It is possible that the user presses the button to get the address before the
-            // GoogleApiClient object successfully connects. In such a case, mAddressRequested
-            // is set to true, but no attempt is made to fetch the address (see
-            // fetchAddressButtonHandler()) . Instead, we start the intent service here if the
-            // user has requested an address, since we now have a connection to GoogleApiClient.
-            if (mAddressRequested) {
-                startIntentService();
-            }
-            SharedPrefUtil.putString(AppConstants.LOCATION_LONGITUDE,""+mLastLocation.getLongitude(),FirstActivity.this);
-            SharedPrefUtil.putString(AppConstants.LOCATION_LATTITUDE ,""+mLastLocation.getLatitude(),FirstActivity.this);
+        }catch (SecurityException e){
+            e.printStackTrace();
         }
     }
 
@@ -241,6 +246,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
      */
     protected void displayAddressOutput() {
 //        mLocationAddressTextView.setText(mAddressOutput);
+        ProgressUtils.removeSimpleProgressDialog();
         Toast.makeText(FirstActivity.this,mAddressOutput,Toast.LENGTH_SHORT).show();
         ActivitySwitcher.switchActivity(FirstActivity.this, NavigationActivity.class,true);
     }

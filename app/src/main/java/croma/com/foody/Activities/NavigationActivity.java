@@ -136,6 +136,6 @@ public class NavigationActivity extends AppCompatActivity
     public void onItemClick(int mPosition) {
 
         ArrayList<geometry> arrayList = ((RestroListFragment)getSupportFragmentManager().findFragmentByTag(RestroListFragment.TAG)).mArrayList;
-        geometry tempValues = (geometry) arrayList.get(mPosition);
+        geometry tempValues = arrayList.get(mPosition);
     }
 }
