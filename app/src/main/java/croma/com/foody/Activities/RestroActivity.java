@@ -104,7 +104,7 @@ public class RestroActivity extends AppCompatActivity implements initInterface {
                         }
                     });
                 } catch (Exception e) {
-                    Toast.makeText(RestroActivity.this, "There is some problem while getting restarorent", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RestroActivity.this, "There is some problem while getting restaurent", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 

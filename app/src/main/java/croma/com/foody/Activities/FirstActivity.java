@@ -182,6 +182,7 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
         // in rare cases when a location is not available.
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
+
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
                 Toast.makeText(this, R.string.no_geocoder_available, Toast.LENGTH_LONG).show();

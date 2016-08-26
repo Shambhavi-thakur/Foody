@@ -25,7 +25,7 @@ import croma.com.foody.interfaces.initInterface;
 public class SetLocationFragment extends Fragment implements initInterface, View.OnClickListener {
 
 
-    private static final String TAG     =       SetLocationFragment.class.getSimpleName();
+    public static final String TAG     =       SetLocationFragment.class.getSimpleName();
 
 
 

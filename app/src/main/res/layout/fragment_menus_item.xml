@@ -2,11 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="croma.com.foody.Fragments.RestroListFragment">
+    tools:context="croma.com.foody.Fragments.MenusItemFragment">
 
     <ListView
-        android:id="@+id/restroListView"
+        android:id="@+id/menusListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
+
 
 </RelativeLayout>

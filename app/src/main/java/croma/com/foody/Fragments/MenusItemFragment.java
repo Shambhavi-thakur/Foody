@@ -1,36 +1,32 @@
 package croma.com.foody.Fragments;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import croma.com.foody.Activities.FirstActivity;
-import croma.com.foody.Activities.NavigationActivity;
+import java.util.ArrayList;
+
+import croma.com.foody.Activities.RestroActivity;
+import croma.com.foody.Adapters.CustomListAdapter;
 import croma.com.foody.R;
-import croma.com.foody.Util.ActivitySwitcher;
-import croma.com.foody.Util.SharedPrefUtil;
 import croma.com.foody.interfaces.initInterface;
-
+import croma.com.foody.io.geometry;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LocatemeFragment.OnFragmentInteractionListener} interface
+ * {@link MenusItemFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LocatemeFragment#newInstance} factory method to
+ * Use the {@link MenusItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LocatemeFragment extends Fragment implements initInterface,View.OnClickListener {
-
-
-
-
+public class MenusItemFragment extends Fragment implements initInterface, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,15 +35,17 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     private OnFragmentInteractionListener mListener;
+
+    public static final String TAG = MenusItemFragment.class.getSimpleName();
+    public ArrayList<geometry> mArrayList = new ArrayList<>();
+    public ListView menusListView;
+    public CustomListAdapter adapter;
     private View mView;
-    private Button locate_button;
-    private TextView manually_TextView;
 
 
-
-
-    public LocatemeFragment() {
+    public MenusItemFragment() {
         // Required empty public constructor
     }
 
@@ -57,11 +55,11 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LocatemeFragment.
+     * @return A new instance of fragment MenusItemFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LocatemeFragment newInstance(String param1, String param2) {
-        LocatemeFragment fragment = new LocatemeFragment();
+    public static MenusItemFragment newInstance(String param1, String param2) {
+        MenusItemFragment fragment = new MenusItemFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,18 +76,16 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
         }
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView =  inflater.inflate(R.layout.fragment_locateme, container, false);
+        mView = inflater.inflate(R.layout.fragment_menus_item, container, false);
+
         findViewById();
         applyFont();
         setOnClickListener();
         return mView;
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -116,13 +112,13 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
         mListener = null;
     }
 
-
-
     @Override
     public void findViewById() {
 
-        locate_button = (Button)mView.findViewById(R.id.locate_button);
-        manually_TextView = (TextView)mView.findViewById(R.id.manually_TextView);
+     menusListView = (ListView)mView.findViewById(R.id.menusListView);
+        Resources Res = getResources();
+        // ---------- Create Custom Adapter ------------//
+        adapter = new CustomListAdapter(RestroActivity,mArrayList,Res);
     }
 
     @Override
@@ -133,24 +129,11 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
     @Override
     public void setOnClickListener() {
 
-        locate_button.setOnClickListener(this);
-        manually_TextView.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.locate_button:{
-                SharedPrefUtil.putBoolean("comeFromManual",false,getActivity());
-                ((FirstActivity)getActivity()).fetchAddressButtonHandler();
-                break;
-            }
-            case R.id.manually_TextView : {
-                SharedPrefUtil.putBoolean("comeFromManual",true,getActivity());
-                ActivitySwitcher.switchActivityWithoutHandler(getActivity(),NavigationActivity.class,true);
-                break;
-            }
-        }
+    public void onClick(View view) {
+
     }
 
     /**

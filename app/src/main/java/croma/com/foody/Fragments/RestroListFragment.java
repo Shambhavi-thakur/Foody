@@ -33,6 +33,7 @@ import croma.com.foody.Adapters.CustomListAdapter;
 import croma.com.foody.Constants.AppConstants;
 import croma.com.foody.Constants.ServiceConfig;
 import croma.com.foody.R;
+import croma.com.foody.Fragments.MenusItemFragment;
 import croma.com.foody.Util.NetUtil;
 import croma.com.foody.Util.ProgressUtils;
 import croma.com.foody.Util.SharedPrefUtil;
@@ -48,7 +49,7 @@ import croma.com.foody.io.geometry;
  * Use the {@link RestroListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RestroListFragment extends Fragment implements initInterface {
+public class RestroListFragment extends Fragment implements initInterface, View.OnClickListener, MenusItemFragment.OnFragmentInteractionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -172,6 +173,16 @@ public class RestroListFragment extends Fragment implements initInterface {
 
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -216,10 +227,9 @@ public class RestroListFragment extends Fragment implements initInterface {
                         }
                     });
                 } catch (Exception e) {
-                    Toast.makeText(getActivity(), "There is some problem while getting restarorent", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "There is some problem while getting restaurent", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -245,6 +255,11 @@ public class RestroListFragment extends Fragment implements initInterface {
      * This function used by adapter
      ****************/
     public void onItemClick(int mPosition) {
+        ArrayList<geometry> arrayList = ((MenusItemFragment)getSupportFragmentManager().findFragmentByTag(MenusItemFragment.TAG)).mArrayList;
         geometry tempValues = (geometry) mArrayList.get(mPosition);
+
+
+
+
     }
 }

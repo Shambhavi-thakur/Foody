@@ -9,7 +9,7 @@
         android:id="@+id/splashimage_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/image_splash">
+        android:background="@drawable/splash_image">
     </ImageView>
 </RelativeLayout>
 

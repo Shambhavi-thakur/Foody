@@ -42,7 +42,7 @@
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.AccountDetailsActivity" />
-        <activity android:name=".Activities.ListDetailsActivity"></activity>
+        <activity android:name=".Activities.ListDetailsActivity" />
 
         <service
             android:name=".services.FetchAddressIntentService"
@@ -51,7 +51,12 @@
         <activity
             android:name=".Activities.RestroActivity"
             android:label="@string/title_activity_restro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.SettingsActivity" />
+        <activity android:name=".Activities.InfoActivity" />
+        <activity android:name=".Activities.OrdersActivity" />
+        <activity android:name=".Activities.RestroMenuActivity" />
+        <activity android:name=".Activities.AddressBookActivity"></activity>
     </application>
 
 </manifest>

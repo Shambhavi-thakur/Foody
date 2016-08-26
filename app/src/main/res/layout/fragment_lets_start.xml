@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/letsstart_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:background="@drawable/letsstartimage_icon" />
 
     <TextView
@@ -21,10 +21,22 @@
         android:textStyle="bold"
         android:layout_below="@+id/letsstart_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="The biggest variety of restaurants, at the best prices, delivered fast to Your door"
+        android:textColor="#402517"
+        android:paddingLeft="13dp"
+        android:layout_marginTop="420dp"
+        android:textSize="22sp"
+        />
 
     <Button
         android:id="@+id/letsstartbutton"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
