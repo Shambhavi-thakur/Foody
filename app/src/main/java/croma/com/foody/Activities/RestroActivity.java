@@ -152,6 +152,6 @@ public class RestroActivity extends AppCompatActivity implements initInterface {
      * This function used by adapter
      ****************/
     public void onItemClick(int mPosition) {
-        geometry tempValues = (geometry) mArrayList.get(mPosition);
+        geometry tempValues = mArrayList.get(mPosition);
     }
 }

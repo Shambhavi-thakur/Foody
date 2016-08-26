@@ -8,13 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import croma.com.foody.Activities.FirstActivity;
 import croma.com.foody.Activities.NavigationActivity;
 import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
-import croma.com.foody.Util.SharedPrefUtil;
 import croma.com.foody.interfaces.initInterface;
 
 
@@ -42,7 +40,6 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
     private OnFragmentInteractionListener mListener;
     private View mView;
     private Button locate_button;
-    private TextView manually_TextView;
 
 
 
@@ -89,7 +86,6 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
         applyFont();
         setOnClickListener();
         return mView;
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -122,7 +118,6 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
     public void findViewById() {
 
         locate_button = (Button)mView.findViewById(R.id.locate_button);
-        manually_TextView = (TextView)mView.findViewById(R.id.manually_TextView);
     }
 
     @Override
@@ -132,22 +127,14 @@ public class LocatemeFragment extends Fragment implements initInterface,View.OnC
 
     @Override
     public void setOnClickListener() {
-
         locate_button.setOnClickListener(this);
-        manually_TextView.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.locate_button:{
-                SharedPrefUtil.putBoolean("comeFromManual",false,getActivity());
                 ((FirstActivity)getActivity()).fetchAddressButtonHandler();
-                break;
-            }
-            case R.id.manually_TextView : {
-                SharedPrefUtil.putBoolean("comeFromManual",true,getActivity());
-                ActivitySwitcher.switchActivityWithoutHandler(getActivity(),NavigationActivity.class,true);
                 break;
             }
         }

@@ -110,7 +110,7 @@ public class CustomListAdapter extends BaseAdapter implements View.OnClickListen
         if(data.size()>0){
             /***** Get each Model object from Arraylist ********/
             tempValues = null;
-            tempValues = (geometry) data.get(position);
+            tempValues = data.get(position);
 
             /************  Set Model values in Holder elements ***********/
             holder.restroNameTextView.setText(tempValues.name);
