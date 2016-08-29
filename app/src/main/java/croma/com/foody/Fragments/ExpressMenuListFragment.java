@@ -9,27 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import croma.com.foody.Activities.FirstActivity;
 import croma.com.foody.Activities.NavigationActivity;
+import croma.com.foody.Adapters.ExperssListAdapter;
 import croma.com.foody.Constants.AppConstants;
 import croma.com.foody.R;
 import croma.com.foody.interfaces.initInterface;
 import croma.com.foody.io.geometry;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MenusItemFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MenusItemFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MenusItemFragment extends Fragment implements initInterface, View.OnClickListener {
+
+public class ExpressMenuListFragment extends Fragment implements initInterface, View.OnClickListener {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,30 +37,21 @@ public class MenusItemFragment extends Fragment implements initInterface, View.O
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
-    public static final String TAG = MenusItemFragment.class.getSimpleName();
     private View mView;
-    private LinearLayout experssLinearLayout,deliveryMenuLinearLayout;
+    private ListView expressListView;
+    private ArrayList<String> mArraList = new ArrayList<>();
+    private ExperssListAdapter mExperssListAdapter;
     private geometry geometry;
-    private TextView restroNameTextView,restroAddressTextView;
+    private TextView restroAddressTextView,restroNameTextView;
     private ImageView restroImageView;
 
-
-    public MenusItemFragment() {
+    public ExpressMenuListFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MenusItemFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MenusItemFragment newInstance(String param1, String param2) {
-        MenusItemFragment fragment = new MenusItemFragment();
+
+    public static ExpressMenuListFragment newInstance(String param1, String param2) {
+        ExpressMenuListFragment fragment = new ExpressMenuListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,10 +72,8 @@ public class MenusItemFragment extends Fragment implements initInterface, View.O
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_menus_item, container, false);
+        mView = inflater.inflate(R.layout.fragment_express_menu_list, container, false);
         findViewById();
-        applyFont();
-        setOnClickListener();
         return mView;
     }
 
@@ -115,11 +101,10 @@ public class MenusItemFragment extends Fragment implements initInterface, View.O
         mListener = null;
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-        ((NavigationActivity)getActivity()).getSupportActionBar().setTitle("Menus");
+        ((NavigationActivity)getActivity()).getSupportActionBar().setTitle("Express Menus");
         Bundle b = getArguments();
         if(b!=null && b.containsKey(AppConstants.BUNDLE_GEOMTERTY_MODEL)){
             geometry    =   (geometry) b.getSerializable(AppConstants.BUNDLE_GEOMTERTY_MODEL);
@@ -133,17 +118,33 @@ public class MenusItemFragment extends Fragment implements initInterface, View.O
                 Picasso.with(getActivity()).load(geometry.icon).resize(150,150).into(restroImageView);
             }
         }
+
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     @Override
     public void findViewById() {
 
-        experssLinearLayout          =       (LinearLayout)mView.findViewById(R.id.experssLinearLayout);
-        deliveryMenuLinearLayout     =       (LinearLayout)mView.findViewById(R.id.deliveryMenuLinearLayout);
+        expressListView     =       (ListView)mView.findViewById(R.id.expressListView);
         restroNameTextView           =       (TextView)mView.findViewById(R.id.restroNameTextView);
         restroAddressTextView        =       (TextView)mView.findViewById(R.id.restroAddressTextView);
         restroImageView              =       (ImageView)mView.findViewById(R.id.restroImageView);
-
+        mExperssListAdapter =       new ExperssListAdapter(getActivity(),mArraList);
+        expressListView.setAdapter(mExperssListAdapter);
+        mArraList.add("Express Shani Wraps");
+        mArraList.add("Express Down South");
+        mArraList.add("Express Biryanis");
+        mArraList.add("Express Not Just Parathas");
+        mArraList.add("Express Value Meals");
+        mArraList.add("Express Platters");
+        mArraList.add("Express Beverages");
+       mExperssListAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -154,36 +155,7 @@ public class MenusItemFragment extends Fragment implements initInterface, View.O
     @Override
     public void setOnClickListener() {
 
-        experssLinearLayout.setOnClickListener(this);
-        deliveryMenuLinearLayout.setOnClickListener(this);
-
     }
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-            case R.id.experssLinearLayout:{
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(AppConstants.BUNDLE_GEOMTERTY_MODEL,geometry);
-                ExpressMenuListFragment expressMenuListFragment = new ExpressMenuListFragment();
-                expressMenuListFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container,expressMenuListFragment).addToBackStack(null).commit();
-                break;
-            }
-            case R.id.deliveryMenuLinearLayout:{
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(AppConstants.BUNDLE_GEOMTERTY_MODEL,geometry);
-                DeliverMenuListFragment deliverMenuListFragment = new DeliverMenuListFragment();
-                deliverMenuListFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container,deliverMenuListFragment).addToBackStack(null).commit();
-                break;
-            }
-        }
-    }
-
 
     /**
      * This interface must be implemented by activities that contain this

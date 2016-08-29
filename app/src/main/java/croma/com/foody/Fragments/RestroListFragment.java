@@ -19,6 +19,7 @@ import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.rey.material.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import croma.com.foody.Activities.FirstActivity;
 import croma.com.foody.Activities.NavigationActivity;
 import croma.com.foody.Activities.RestroActivity;
 import croma.com.foody.Adapters.CustomListAdapter;
@@ -65,6 +67,7 @@ public class RestroListFragment extends Fragment implements initInterface {
     public CustomListAdapter adapter;
     private View mView;
     public NavigationActivity restroActivity = null;
+    private android.widget.TextView numberOfRestro;
 
 
 
@@ -139,6 +142,7 @@ public class RestroListFragment extends Fragment implements initInterface {
     @Override
     public void onResume() {
         super.onResume();
+        ((NavigationActivity)getActivity()).getSupportActionBar().setTitle(SharedPrefUtil.getString(AppConstants.COMPELTE_LOCATION,"UnKnown",getActivity()));
         if(NetUtil.isNetworkAvailable(getActivity())) {
             ProgressUtils.showSimpleProgressDialog(getActivity(),"","",false);
             String url = ServiceConfig.URL + "&location="+ SharedPrefUtil.getString(
@@ -159,7 +163,6 @@ public class RestroListFragment extends Fragment implements initInterface {
         /**************** Create Custom Adapter *********/
         adapter = new CustomListAdapter(restroActivity, mArrayList, res);
         restroListView.setAdapter(adapter);
-
     }
 
     @Override
@@ -212,6 +215,8 @@ public class RestroListFragment extends Fragment implements initInterface {
                             adapter = new CustomListAdapter(restroActivity, mArrayList, res);
                             restroListView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
+                            numberOfRestro  =  (android.widget.TextView)mView.findViewById(R.id.numberOfRestro);
+                            numberOfRestro.setText(""+mArrayList.size() +" restaurants deliver to you");
                             ProgressUtils.removeSimpleProgressDialog();
                         }
                     });
@@ -238,13 +243,5 @@ public class RestroListFragment extends Fragment implements initInterface {
         jsonObjectRequestWithGet.setShouldCache(false);
         jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MyApplicationClass.getInstance().getRequestQueue().add(jsonObjectRequestWithGet);
-    }
-
-
-    /*****************
-     * This function used by adapter
-     ****************/
-    public void onItemClick(int mPosition) {
-        geometry tempValues = (geometry) mArrayList.get(mPosition);
     }
 }

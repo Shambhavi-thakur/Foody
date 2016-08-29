@@ -243,6 +243,8 @@ public class FirstActivity extends AppCompatActivity implements initInterface,
     protected void displayAddressOutput() {
 //        mLocationAddressTextView.setText(mAddressOutput);
         Toast.makeText(FirstActivity.this,mAddressOutput,Toast.LENGTH_SHORT).show();
+        SharedPrefUtil.putString(AppConstants.COMPELTE_LOCATION,mAddressOutput,FirstActivity.this);
+        Toast.makeText(FirstActivity.this,mAddressOutput,Toast.LENGTH_SHORT).show();
         ActivitySwitcher.switchActivity(FirstActivity.this, NavigationActivity.class,true);
     }
 

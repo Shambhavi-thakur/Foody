@@ -1,11 +1,12 @@
 package croma.com.foody.io;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by muadmin on 7/29/16.
  */
-public class geometry {
+public class geometry implements Serializable{
 
     public location location;
     public String  icon;

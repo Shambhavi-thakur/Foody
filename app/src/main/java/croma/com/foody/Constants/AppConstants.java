@@ -20,6 +20,13 @@ public class AppConstants {
     // First page Activity
     public static final String LOCATION_LONGITUDE = "longitude";
     public static final String LOCATION_LATTITUDE = "lattitude";
+    public static final String COMPELTE_LOCATION = "complete_location";
+
+
+
+    // Navigation Activity
+    public static final String BUNDLE_GEOMTERTY_MODEL = "geometery_model";
+
 
 
     // splash Activity

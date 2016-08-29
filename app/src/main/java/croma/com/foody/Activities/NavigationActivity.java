@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import java.util.ArrayList;
 import croma.com.foody.Constants.AppConstants;
+import croma.com.foody.Fragments.DeliverMenuListFragment;
+import croma.com.foody.Fragments.ExpressMenuListFragment;
+import croma.com.foody.Fragments.MenusItemFragment;
 import croma.com.foody.Fragments.RestroListFragment;
 import croma.com.foody.R;
 import croma.com.foody.Util.ActivitySwitcher;
@@ -25,7 +28,9 @@ import croma.com.foody.io.geometry;
  *         Navigation Activity Class
  */
 public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener,initInterface ,RestroListFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener,initInterface ,RestroListFragment.OnFragmentInteractionListener
+        ,MenusItemFragment.OnFragmentInteractionListener, ExpressMenuListFragment.OnFragmentInteractionListener,DeliverMenuListFragment.OnFragmentInteractionListener
+{
 
 
     @Override
@@ -135,7 +140,16 @@ public class NavigationActivity extends AppCompatActivity
      ****************/
     public void onItemClick(int mPosition) {
 
-        ArrayList<geometry> arrayList = ((RestroListFragment)getSupportFragmentManager().findFragmentByTag(RestroListFragment.TAG)).mArrayList;
+        ArrayList<geometry> arrayList = ((RestroListFragment) getSupportFragmentManager().findFragmentByTag(RestroListFragment.TAG)).mArrayList;
         geometry tempValues = (geometry) arrayList.get(mPosition);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(AppConstants.BUNDLE_GEOMTERTY_MODEL,tempValues);
+        MenusItemFragment menusItemFragment = new MenusItemFragment();
+        menusItemFragment.setArguments(bundle
+        );
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, menusItemFragment).
+                addToBackStack(null).commit();
+
+
     }
 }

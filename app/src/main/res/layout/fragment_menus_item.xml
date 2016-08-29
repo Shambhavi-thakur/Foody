@@ -4,10 +4,128 @@
     android:layout_height="match_parent"
     tools:context="croma.com.foody.Fragments.MenusItemFragment">
 
-    <ListView
-        android:id="@+id/menusListView"
+
+    <LinearLayout
+        android:id="@+id/menuLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="wrap_content"
+        android:background="#F1F1F1"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+
+        <ImageView
+            android:id="@+id/restroImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/app_icon" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
+
+
+            <TextView
+                android:id="@+id/restroNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yo Yo China Town"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/restroAddressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Burgers, Chinese, South Indian, Wraps" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuLinearLayout"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/experssLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/experssMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Express Menu"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textColor="#C3C3C3"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#F1F1F1"></View>
+
+
+        <LinearLayout
+            android:id="@+id/deliveryMenuLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/deliveryMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Delivery Menu"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textColor="#C3C3C3"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#F1F1F1"></View>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
